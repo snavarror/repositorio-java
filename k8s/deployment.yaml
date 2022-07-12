@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: repositorio-java
+  namespace: sapia
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: repositorio-java
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: repositorio-java
+        tier: backend
+    spec:
+      containers:
+        - name: repositorio-java
+          image: sapiaregistry.azurecr.io/repositorio-java:#{TAG}
+          env:
+            - name: PROFILE
+              value: dev
+          resources:
+            requests:
+              cpu: 0.125
+              memory: "256Mi"
+            limits:
+              cpu: 0.5
+              memory: "1024Mi"
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: secretsapiaregistry
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: repositorio-java
+  namespace: sapia
+spec:
+  selector:
+    app: repositorio-java
+    tier: backend
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
