@@ -32,8 +32,8 @@ stage('Test')
 {	
 sh "echo Scan Sonarqube"
 sh "mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=demo \
-  -Dsonar.host.url=${TOKEN_URL} \
+  -Dsonar.projectKey=${GIT_REPOSITORY} \
+  -Dsonar.host.url=${URL_SONAR} \
   -Dsonar.login=${TOKEN_SONAR}"  
 }
 
