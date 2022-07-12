@@ -19,7 +19,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public List<Usuario> list(Usuario usuario) throws Exception {
 		List<Usuario> list = usuarioRepository.list(usuario);
-		String CLAVE = "admin"
+		String CLAVE = "admin";
 		Usuario usr1 = new Usuario();
                 usr1.setNombre("Usuario1");
 		Usuario usr2 = new Usuario();
