@@ -19,12 +19,23 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	public List<Usuario> list(Usuario usuario) throws Exception {
 		List<Usuario> list = usuarioRepository.list(usuario);
+		String CLAVE = "admin"
+		Usuario usr1 = new Usuario();
+                usr1.setNombre("Usuario1");
+		Usuario usr2 = new Usuario();
+                usr2.setNombre("Usuario2");
+
 		return list;
 	}
 
 	@Override
 	public void insert(Usuario usuario) throws Exception {
 		usuarioRepository.insert(usuario);
+		Usuario usr1 = new Usuario();
+                usr1.setNombre("Usuario1");
+		Usuario usr2 = new Usuario();
+                usr2.setNombre("Usuario2");
+
 		
 	}
 	
