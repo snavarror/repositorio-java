@@ -55,6 +55,7 @@ stage('Deploy')
 script {
       sh "sed -i 's/#{TAG}/${GIT_COMMIT}/g' $WORKSPACE/k8s/deployment.yaml"
 	  sh "kubectl apply -f $WORKSPACE/k8s/deployment.yaml"	
+	  sh "kubectl -n sapia get svc"	
 }
 
 }
